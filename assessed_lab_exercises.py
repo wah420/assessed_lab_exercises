@@ -1,94 +1,47 @@
 def calculator(num1, num2, operator):
-    """
-    This function performs basic arithmetic and comparison operations on two numbers.
+    result = None  # Default value for invalid cases
 
-    Parameters:
-    num1 (int or float): The first number.
-    num2 (int or float): The second number.
-    operator (str): A string representing the operation to perform. The valid operators are:
-        - "+" for addition
-        - "-" for subtraction
-        - "*" for multiplication
-        - "/" for division
-        - "%" for modulus
-        - ">" for greater than comparison
-        - ">=" for greater than or equal to comparison
-        - "<" for less than comparison
-        - "<=" for less than or equal to comparison
-
-    Returns:
-    result: The result of the arithmetic operation or comparison. The type of the result depends on the operator:
-        - int or float for arithmetic operations
-        - bool for comparison operations
-
-    Example Usage:
-    --------------
-    calculate(4, 5, "*")  # Output: The result is: 20
-    calculate(10, 2, "/")  # Output: The result is: 5.0
-    calculate(7, 7, ">=")  # Output: The comparison result is: True
-
-    Note:
-    -----
-    - If division by zero is attempted, the function prints an error message and does not return a result.
-    - If an invalid operator is provided, the function prints an error message and does not return a result.
-    """
-    result = None
-
-    if operator == "+":
+    if operator == "+":  # Check for addition
         result = num1 + num2
-        print(f"The result is: {result}")
 
-    elif operator == "-":
+    elif operator == "-":  # Check for subtraction
         result = num1 - num2
-        print(f"The result is: {result}")
 
-    elif operator == "*":
+    elif operator == "*":  # Check for multiplication
         result = num1 * num2
-        print(f"The result is: {result}")
 
-    elif operator == "/":
-        if num1 == 0 or num2 == 0:
+    elif operator == "/":  # Check for division
+        if num2 == 0:  # Handle division by zero
             print("You cannot divide by zero")
+            result = 0  # Return 0 instead of None
         else:
-            result = num1 / num2
-            print(f"The result is: {result}")
+            result = num1 / num2  # Valid division
 
-    elif operator == "%":
-        result = num1 % num2
-        print(f"The result is: {result}")
+    elif operator == "%":  # Check for modulo
+        if num2 == 0:  # Handle modulo by zero
+            print("You cannot take modulo by zero")
+            result = 0  # Return 0 for modulo by zero
+        else:
+            result = num1 % num2
 
-    elif operator == ">":
-        if num1 > num2:
-            result = True
-        else:
-            result = False
-        print(f"The result is: {result}")
-        
-    elif operator == ">=":
-        if num1 >= num2:
-            result = True
-        else:
-            result = False
-        print(f"The result is: {result}")
-        
-    elif operator == "<":
-        if num1 < num2:
-            result = True
-        else:
-            result = False
-        print(f"The result is: {result}")
-        
-    elif operator == "<=":
-        if num1 <= num2:
-            result = True
-        else:
-            result = False
-        print(f"The result is: {result}")
+    elif operator == ">":  # Check for greater than
+        result = num1 > num2
+
+    elif operator == ">=":  # Check for greater than or equal
+        result = num1 >= num2
+
+    elif operator == "<":  # Check for less than
+        result = num1 < num2
+
+    elif operator == "<=":  # Check for less than or equal
+        result = num1 <= num2
 
     else:
         print("Invalid operator.")
+        result = 0  # Return 0 for invalid operators
 
-    return result
+    return result  # Return the calculated result
+
 
 def max_of_three(num1, num2, num3):
     """
@@ -448,21 +401,18 @@ def is_golden_number(n):
 
     return False  
 
-def km_to_miles():
+def km_to_miles(kilometers):
 
-    try:
-        kilometers = float(input("Enter the distance in kilometers: "))
-        
-        if kilometers < 0:
-            print("Please enter a positive number.")
-            return
-        
-        conversion_factor = 0.62
-        miles = kilometers * conversion_factor
-        print(f"{kilometers} kilometers is equal to {round(miles, 3)} miles.")
-    
-    except ValueError:
-        print("Invalid input! Please enter a numeric value.")
+    if kilometers < 0:
+        print("Please enter a positive number.")
+        return None
+
+    conversion_factor = 0.62
+    miles = kilometers * conversion_factor
+    return round(miles, 3)
+
+
+
 
 def letter_occurrence(input_string):
 
